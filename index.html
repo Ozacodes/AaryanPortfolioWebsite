@@ -1,0 +1,470 @@
+<html>
+<head>
+<base>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #6c5ce7;
+    --secondary-color: #2d3436;
+    --accent-color: #00cec9;
+    --text-color: #2d3436;
+    --bg-color: #ffffff;
+    --section-bg: #f9f9f9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    text-align: center; /* Center all text */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2em 0;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    text-align: center;
+}
+
+nav {
+    background-color: rgba(255, 255, 255, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--primary-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    color: white;
+    text-align: center;
+    padding: 150px 0;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.hero p {
+    font-size: 1.2em;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    animation: fadeInUp 1s ease-out 0.5s backwards;
+}
+
+.section {
+    padding: 100px 0;
+    background-color: var(--section-bg);
+}
+
+.section:nth-child(even) {
+    background-color: var(--bg-color);
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 2.5em;
+    color: var(--primary-color);
+}
+
+.skills-grid, .certifications-grid, .find-me-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center; /* Ensure center alignment */
+}
+
+.skill-item, .certification-item, .find-me-item {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.skill-item:hover, .certification-item:hover, .find-me-item:hover {
+    transform: translateY(-5px);
+}
+
+.skill-icon, .certification-icon, .find-me-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+}
+
+.btn {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 600;
+    text-decoration: none;
+    margin: 20px 0;
+}
+
+.btn:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+}
+
+footer {
+    background-color: var(--secondary-color);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#contact {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    color: white;
+}
+
+#contact .section-title {
+    color: white;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    position: relative;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: white;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    text-align: center; /* Ensure text in form fields is centered */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.form-group label {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    transition: all 0.3s ease;
+    pointer-events: none;
+    text-align: center;
+}
+
+.form-group input:focus + label,
+.form-group textarea:focus + label,
+.form-group input:not(:placeholder-shown) + label,
+.form-group textarea:not(:placeholder-shown) + label {
+    top: -20px;
+    left: 0;
+    font-size: 12px;
+    color: white;
+}
+
+#contact .btn {
+    background-color: white;
+    color: var(--primary-color);
+    align-self: center;
+    padding: 15px 40px;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+#contact .btn:hover {
+    background-color: var(--accent-color);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+#about {
+    background-color: var(--bg-color);
+    padding: 100px 0;
+    text-align: center;
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Aligns the about content to the center */
+    gap: 50px;
+    flex-direction: column;
+}
+
+.about-text h3 {
+    font-size: 2em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.about-text p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.highlight {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+</style></head><body>
+    <header>
+        <div class="container">
+            <h1>Aaryan Oza</h1>
+            <p>Rising High School Freshman | Math Enthusiast | Aspiring Tech Leader</p>
+        </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+            <li><a href="#find-me">Find Me</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h1>Welcome to My Digital Space</h1>
+                <p>Sharing my journey in math, technology, and leadership</p>
+                <a href="#contact" class="btn">Let's Collaborate</a>
+            </div>
+        </section>
+        
+        <section id="about" class="section">
+            <div class="container">
+                <h2 class="section-title">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Goal-Oriented Student & Tech Enthusiast</h3>
+                        <p>Hello! I'm Aaryan Oza, a <span class="highlight">rising high school freshman</span> passionate about math, technology, and leadership. I've led math competitions, developed tech projects, and embraced learning opportunities in both STEM and business domains.</p>
+                        <p>Through my roles as Student Director of my middle school math team and various tech projects, I've honed my leadership, communication, and problem-solving skills.</p>
+                        <a href="#contact" class="btn">Connect With Me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects" class="section">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <div class="project-content">
+                            <h3>HealthChat AI</h3>
+                            <p>An AI platform trained on healthcare basics with multilingual support to answer queries in different languages.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Google Cloud</span>
+                                <span class="project-tag">AI</span>
+                                <span class="project-tag">Python</span>
+                            </div>
+                            <a href="https://modernportfolio.example.com/projects/healthchat" class="btn">View Project</a>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-content">
+                            <h3>Finance Projects Portfolio</h3>
+                            <p>Developed projects including a retirement calculator, mortgage calculator, and correlation analysis tool using Python.</p>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Jupyter Notebook</span>
+                                <span class="project-tag">Finance</span>
+                            </div>
+                            <a href="https://modernportfolio.example.com/projects/finance" class="btn">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="skills" class="section">
+            <div class="container">
+                <h2 class="section-title">Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <div class="skill-icon">🧠</div>
+                        <h3>Math Leadership</h3>
+                        <p>Led school math teams, facilitated competitions, and inspired younger students.</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">💻</div>
+                        <h3>Programming</h3>
+                        <p>Proficient in Python, HTML, CSS, and JavaScript, with experience in app development and machine learning.</p>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-icon">📊</div>
+                        <h3>Data Analysis</h3>
+                        <p>Analyzed financial data using custom Python libraries and tools like Jupyter Notebook.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2 class="section-title">Certifications & Awards</h2>
+                <div class="certifications-grid">
+                    <div class="certification-item">
+                        <div class="certification-icon">🏆</div>
+                        <h3>Gold Rank - Google Cloud Skills</h3>
+                        <p>Ranked top in various cloud labs and courses, specializing in AI and machine learning.</p>
+                    </div>
+                    <div class="certification-item">
+                        <div class="certification-icon">🎖️</div>
+                        <h3>Joe Holbrook Memorial Math Award</h3>
+                        <p>Consistently ranked as a top scorer in the Joe Holbrook Math Competition.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="find-me" class="section">
+            <div class="container">
+                <h2 class="section-title">Find Me Online</h2>
+                <div class="find-me-grid">
+                    <div class="find-me-item">
+                        <div class="find-me-icon">👨‍💻</div>
+                        <h3>GitHub</h3>
+                        <p>Explore my coding projects and open-source contributions.</p>
+                        <a href="https://github.com/aaryanoza" class="btn" target="_blank">Visit Profile</a>
+                    </div>
+                    <div class="find-me-item">
+                        <div class="find-me-icon">💼</div>
+                        <h3>LinkedIn</h3>
+                        <p>Connect with me professionally.</p>
+                        <a href="https://linkedin.com/in/aaryanoza" class="btn" target="_blank">Connect</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="section">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <div class="contact-container">
+                    <form class="contact-form" action="https://modernportfolio.example.com/send-message" method="GET">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="5" required placeholder=" "></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Aaryan Oza. Created with passion for technology and learning.</p>
+        </div>
+    </footer>
+</body></html>
